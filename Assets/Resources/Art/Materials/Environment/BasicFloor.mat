@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Basic01
+  m_Name: BasicFloor
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -101,7 +101,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: .389999986
+        second: .5
       data:
         first:
           name: _BumpScale
@@ -138,7 +138,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .0212981496, g: .617647052, b: 0, a: 1}
+        second: {r: .00378460577, g: .514705896, b: .00730817253, a: 1}
       data:
         first:
           name: _EmissionColorUI

@@ -13,8 +13,8 @@ public class s_SpawnHandler : MonoBehaviour
                 instance = FindObjectOfType<s_SpawnHandler>();
                 if (instance == null)
                 {
-                    GameObject SpawnHandler = new GameObject();
-                    SpawnHandler.hideFlags = HideFlags.HideAndDontSave;
+                    GameObject SpawnHandler = new GameObject("_SpawnHandler");
+                    //SpawnHandler.hideFlags = HideFlags.HideAndDontSave;
                     instance = SpawnHandler.AddComponent<s_SpawnHandler>();
                 }
             }
@@ -89,6 +89,7 @@ public class s_SpawnHandler : MonoBehaviour
             yield return new WaitForSeconds(spawnDelay);
             //TODO: Determine which object to spawn when...
             SpawnBasicEnemy(obstacleGoat);
+            print("Spawning...");
         }
     }
 }

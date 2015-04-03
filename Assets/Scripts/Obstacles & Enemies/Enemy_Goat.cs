@@ -7,7 +7,7 @@ public class Enemy_Goat : BasicEnemy
     {
         base.Start();
         SetSpeed(-0.2f, -0.25f);
-        spawnHeight = 1.06f;
+        spawnHeight = 2.25f;
         parent.transform.position += new Vector3(0, spawnHeight, 0);
     }
 }
