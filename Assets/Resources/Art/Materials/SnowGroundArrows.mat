@@ -130,6 +130,10 @@ Material:
         first:
           name: _Metallic
         second: 0
+      data:
+        first:
+          name: _Curvature
+        second: .00100000005
     m_Colors:
       data:
         first:

@@ -33,22 +33,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &128004
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 452816}
-  - 114: {fileID: 11439904}
-  m_Layer: 0
-  m_Name: SpawnHandler
-  m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &148698
 GameObject:
   m_ObjectHideFlags: 1
@@ -160,18 +144,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 416194}
   m_RootOrder: 2
---- !u!4 &452816
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 128004}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.132658, y: 3.28157187, z: -1.19752812}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 475504}
-  m_RootOrder: 2
 --- !u!4 &455436
 Transform:
   m_ObjectHideFlags: 1
@@ -209,7 +181,6 @@ Transform:
   m_Children:
   - {fileID: 472320}
   - {fileID: 416194}
-  - {fileID: 452816}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &476890
@@ -219,7 +190,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148698}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .230000004, y: .469999999, z: 13.1000004}
+  m_LocalPosition: {x: .230000004, y: .469999999, z: 14.96}
   m_LocalScale: {x: 31.8223267, y: 2.64021564, z: 7.36357594}
   m_Children: []
   m_Father: {fileID: 416194}
@@ -411,17 +382,6 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 184578}
   m_Enabled: 1
---- !u!114 &11439904
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 128004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f45d506d2e9189e479418fea4c342427, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

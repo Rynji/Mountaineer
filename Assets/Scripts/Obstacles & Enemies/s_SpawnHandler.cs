@@ -8,14 +8,38 @@ public class s_SpawnHandler : MonoBehaviour
     {
         get
         {
-            return instance ?? (instance = (new GameObject("SpawnHandler")).AddComponent<s_SpawnHandler>());
+            if (instance == null)
+            {
+                instance = FindObjectOfType<s_SpawnHandler>();
+                if (instance == null)
+                {
+                    GameObject SpawnHandler = new GameObject();
+                    SpawnHandler.hideFlags = HideFlags.HideAndDontSave;
+                    instance = SpawnHandler.AddComponent<s_SpawnHandler>();
+                }
+            }
+            return instance;
         }
     }
 
     float[] spawnLanes = new float[7];
     float firstLanePosition = -8.5f;
     float laneOffset = 3f;
-    float spawnX = 15f;
+    float spawnX = 22f;
+
+    //Difficulty variables
+    float spawnDelay;
+    public float _spawnDelay
+    {
+        get { return spawnDelay; }
+        set { spawnDelay = value; }
+    }
+    int maxObjectsPerLane;
+    public int _maxObjectsPerLane
+    {
+        get { return maxObjectsPerLane; }
+        set { maxObjectsPerLane = value; }
+    }
 
     int[] laneObjectsAlive = new int[7];
     public int[] _laneObjectsAlive
@@ -24,18 +48,22 @@ public class s_SpawnHandler : MonoBehaviour
         set { laneObjectsAlive = value; }
     }
 
-    GameObject basicEnemy;
+    GameObject obstacleGoat;
 
     void Awake()
     {
         spawnLanes[0] = firstLanePosition;
+        
+        //Difficulty variables
+        spawnDelay = 0.3f;
+        maxObjectsPerLane = 5;
 
         for (int i = 0; i < spawnLanes.Length; i++)
         {
             spawnLanes[i] = firstLanePosition + (i * laneOffset);
         }
 
-        basicEnemy = Resources.Load("Prefabs/BasicEnemy") as GameObject;
+        obstacleGoat = Resources.Load("Prefabs/Obstacle_Goat") as GameObject;
     }
 
     void Start()
@@ -43,26 +71,24 @@ public class s_SpawnHandler : MonoBehaviour
         StartCoroutine(spawnObstacles());
     }
 
-    void SpawnObstacle(GameObject obstacle)
+    void SpawnBasicEnemy(GameObject basicEnemy)
     {
-        int laneToSpawn = Random.Range(0, 6);
-        if (laneObjectsAlive[laneToSpawn] < 1)
+        int laneToSpawn = Random.Range(0, 7);
+        if (laneObjectsAlive[laneToSpawn] < maxObjectsPerLane)
         {
             laneObjectsAlive[laneToSpawn] += 1;
-            GameObject basicEnemy = Instantiate(obstacle, new Vector3(spawnX, obstacle.GetComponent<BasicEnemy>()._spawnHeight, spawnLanes[laneToSpawn]), Quaternion.identity) as GameObject;
-            basicEnemy.GetComponent<BasicEnemy>()._currentLane = laneToSpawn;
+            GameObject spawnedEnemy = Instantiate(basicEnemy, new Vector3(spawnX, 0, spawnLanes[laneToSpawn]), Quaternion.identity) as GameObject;
+            spawnedEnemy.GetComponentInChildren<BasicEnemy>()._currentLane = laneToSpawn;
         }
-        else
-            print("Not spawning, lane: " + laneObjectsAlive[laneToSpawn] + " is already occupied!");
     }
 
     IEnumerator spawnObstacles()
     {
         while (true)
         {
-            SpawnObstacle(basicEnemy);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(spawnDelay);
+            //TODO: Determine which object to spawn when...
+            SpawnBasicEnemy(obstacleGoat);
         }
-
     }
 }

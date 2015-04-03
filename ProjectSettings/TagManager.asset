@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Deadly
   - Ground
+  - DestroyerOfObjects
   layers:
   - Default
   - TransparentFX
