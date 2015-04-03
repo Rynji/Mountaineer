@@ -3,56 +3,35 @@ using System.Collections;
 
 public class BasicEnemy : MonoBehaviour 
 {
-    BoxCollider enemyCollider;
-    Camera cam;
-    Plane[] planes;
-
     float forwardSpeed;
     public float _forwardSpeed
     {
         get { return forwardSpeed; }
         set { forwardSpeed = value; }
     }
-
-    bool justSpawned, canRespawn;
-    public bool _justSpawned
-    { get { return justSpawned; } }
-
-    void Awake()
+    float spawnHeight = 1f;
+    public float _spawnHeight
     {
-        cam = Camera.main;
-        planes = GeometryUtility.CalculateFrustumPlanes(cam);
-        enemyCollider = this.GetComponent<BoxCollider>();
+        get { return spawnHeight; }
+        set { spawnHeight = value; }
+    }
 
+    int currentLane;
+    public int _currentLane
+    {
+        get { return currentLane; }
+        set { currentLane = value; }
+    }
+
+    void Start()
+    {
         SetSpeed();
-        justSpawned = true;
+        print("Enemy spawned on lane: " + currentLane);
     }
 
     void FixedUpdate()
     {
-        //Static forward movement.
         this.transform.position += new Vector3(forwardSpeed, 0f, 0f);
-
-        if (justSpawned)
-            canRespawn = false;
-
-        if (canRespawn)
-        {
-            if (!GeometryUtility.TestPlanesAABB(planes, enemyCollider.bounds))
-            {
-                SetSpeed();
-                SetSpawnPosition();
-            }
-        }
-
-        else if (!canRespawn)
-        {
-            if (GeometryUtility.TestPlanesAABB(planes, enemyCollider.bounds))
-            {
-                canRespawn = true;
-                justSpawned = false;
-            }
-        }
     }
 
     void SetSpeed()
@@ -60,21 +39,13 @@ public class BasicEnemy : MonoBehaviour
         forwardSpeed = Random.Range(-0.1f, -0.2f);
     }
 
-    void SetSpawnPosition()
+    void OnCollisionExit(Collision collision)
     {
-        justSpawned = true;
-        float spawnZpos = Random.Range(-14f, 14f);
-        this.transform.position = new Vector3(14f, 0.75f, spawnZpos);
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Deadly")
+        if (collision.gameObject.tag == "Ground")
         {
-            this.forwardSpeed = collision.gameObject.GetComponent<BasicEnemy>()._forwardSpeed;
-
-            if (collision.gameObject.GetComponent<BasicEnemy>()._justSpawned)
-                SetSpawnPosition();
+            print("Enemy on lane " + currentLane + " left the map.");
+            s_SpawnHandler._instance._laneObjectsAlive[currentLane] -= 1;
+            Destroy(this.gameObject);
         }
     }
 
