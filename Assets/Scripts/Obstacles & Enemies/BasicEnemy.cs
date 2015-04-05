@@ -31,12 +31,6 @@ public class BasicEnemy : MonoBehaviour
     protected void Start()
     {
         despawned = false;
-        parent = this.transform.parent.transform;
-    }
-
-    void FixedUpdate()
-    {
-        parent.transform.position += new Vector3(forwardSpeed, 0f, 0f);
     }
 
     protected void SetSpeed(float min, float max)
@@ -50,18 +44,17 @@ public class BasicEnemy : MonoBehaviour
         {
             despawned = true;
             s_SpawnHandler._instance._laneObjectsAlive[currentLane] -= 1;
-            Destroy(parent.gameObject);
+
+            if(parent != null)
+                Destroy(parent.gameObject);
+            else
+                Destroy(this.gameObject);
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collider)
     {
-        if (collision.gameObject.tag == "Deadly")
-        {
-            this.forwardSpeed = collision.gameObject.GetComponent<BasicEnemy>()._forwardSpeed;
-        }
-
-        if (collision.gameObject.tag == "DestroyerOfObjects")
+        if (collider.gameObject.tag == "DestroyerOfObjects")
         {
             Despawn();
         }

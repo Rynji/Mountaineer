@@ -34,11 +34,18 @@ public class s_SpawnHandler : MonoBehaviour
         get { return spawnDelay; }
         set { spawnDelay = value; }
     }
+    float foodSpawnDelay;
     int maxObjectsPerLane;
     public int _maxObjectsPerLane
     {
         get { return maxObjectsPerLane; }
         set { maxObjectsPerLane = value; }
+    }
+    float staticMovementSpeed;
+    public float _staticMovementSpeed
+    {
+        get { return staticMovementSpeed; }
+        set { staticMovementSpeed = value; }
     }
 
     int[] laneObjectsAlive = new int[7];
@@ -48,7 +55,8 @@ public class s_SpawnHandler : MonoBehaviour
         set { laneObjectsAlive = value; }
     }
 
-    GameObject obstacleGoat;
+    GameObject obstacleGoat, obstaclePineTree, obstacleSnowball;
+    GameObject basicFood;
 
     void Awake()
     {
@@ -57,18 +65,21 @@ public class s_SpawnHandler : MonoBehaviour
         //Difficulty variables
         spawnDelay = 0.3f;
         maxObjectsPerLane = 5;
+        staticMovementSpeed = -0.075f;
+        foodSpawnDelay = 6f;
 
         for (int i = 0; i < spawnLanes.Length; i++)
         {
             spawnLanes[i] = firstLanePosition + (i * laneOffset);
         }
 
-        obstacleGoat = Resources.Load("Prefabs/Obstacle_Goat") as GameObject;
+        LoadPrefabs();
     }
 
     void Start()
     {
         StartCoroutine(spawnObstacles());
+        StartCoroutine(spawnFoods());
     }
 
     void SpawnBasicEnemy(GameObject basicEnemy)
@@ -82,14 +93,75 @@ public class s_SpawnHandler : MonoBehaviour
         }
     }
 
+    void SpawnFood(GameObject food)
+    {
+        int laneToSpawn = Random.Range(0, 7);
+
+        laneObjectsAlive[laneToSpawn] += 1;
+        GameObject spawnedBuff = Instantiate(food, new Vector3(spawnX, 0, spawnLanes[laneToSpawn]), Quaternion.identity) as GameObject;
+    }
+
+    void LoadPrefabs()
+    {
+        //Standard Goat
+        obstacleGoat = Resources.Load("Prefabs/Obstacles/Obstacle_Goat") as GameObject;
+        obstaclePineTree = Resources.Load("Prefabs/Obstacles/Obstacle_PineTree") as GameObject;
+        obstacleSnowball = Resources.Load("Prefabs/Obstacles/Obstacle_Snowball") as GameObject;
+
+        basicFood = Resources.Load("Prefabs/Buffs/BasicFood") as GameObject;
+    }
+
+    IEnumerator spawnFoods()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(foodSpawnDelay);
+            SpawnFood(basicFood);
+        }
+    }
+
     IEnumerator spawnObstacles()
     {
         while (true)
         {
             yield return new WaitForSeconds(spawnDelay);
-            //TODO: Determine which object to spawn when...
-            SpawnBasicEnemy(obstacleGoat);
-            print("Spawning...");
+
+            int spawnDecider = Random.Range(0, 16);
+            Debug.Log("SpawnDecider: " + spawnDecider);
+
+            switch (spawnDecider)
+            {
+                case 0:
+                    SpawnBasicEnemy(obstacleGoat);
+                    break;
+                case 1:
+                    SpawnBasicEnemy(obstaclePineTree);
+                    break;
+                case 2:
+                    SpawnBasicEnemy(obstaclePineTree);
+                    break;
+                case 3:
+                    SpawnBasicEnemy(obstaclePineTree);
+                    break;
+                case 4:
+                    SpawnBasicEnemy(obstaclePineTree);
+                    break;
+                case 5:
+                    SpawnBasicEnemy(obstaclePineTree);
+                    break;
+                case 6:
+                    SpawnBasicEnemy(obstaclePineTree);
+                    break;
+                case 7:
+                    SpawnBasicEnemy(obstaclePineTree);
+                    break;
+                case 15:
+                    SpawnBasicEnemy(obstacleSnowball);
+                    break;
+                default:
+                    SpawnBasicEnemy(obstacleGoat);
+                    break;
+            }
         }
     }
 }

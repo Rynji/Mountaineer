@@ -7,6 +7,9 @@ TagManager:
   - Deadly
   - Ground
   - DestroyerOfObjects
+  - RepositionerOfTerrain
+  - Solid
+  - BasicFood
   layers:
   - Default
   - TransparentFX

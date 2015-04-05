@@ -9,6 +9,13 @@ public class PlayerInteraction : MonoBehaviour
     Camera cam;
     Plane[] planes;
 
+    float stamina;
+    public float _stamina
+    {
+        get { return stamina; }
+        set { stamina = value; }
+    }
+
     void Awake()
     {
         gameCanvas = GameObject.Find("GameCanvas").GetComponent<GameInterfaceHandler>();
@@ -18,6 +25,8 @@ public class PlayerInteraction : MonoBehaviour
         playerCollider = this.GetComponent<BoxCollider>();
 
         gameCanvas._score = 0f;
+
+        stamina = 10f;
     }
 
     void Update()
@@ -30,6 +39,11 @@ public class PlayerInteraction : MonoBehaviour
     void FixedUpdate()
     {
         gameCanvas._score++;
+
+        stamina -= 0.015f;
+
+        if (stamina < 0)
+            GameOver();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -37,6 +51,15 @@ public class PlayerInteraction : MonoBehaviour
         if (collision.gameObject.tag == "Deadly")
         {
             GameOver();
+        }
+    }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.tag == "BasicFood")
+        {
+            this.stamina += 10;
+            Destroy(collider.gameObject);
         }
     }
 

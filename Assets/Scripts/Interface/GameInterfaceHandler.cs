@@ -4,10 +4,13 @@ using UnityEngine.UI;
 
 public class GameInterfaceHandler : MonoBehaviour 
 {
-    Text scoreText, gameoverText, debugText;
+    Text scoreText, gameoverText, staminaText, debugText;
+    PlayerInteraction player;
 
     public Text _gameoverText
     { get { return gameoverText; } set { gameoverText = value; } }
+    public Text _staminaText
+    { get { return staminaText; } set { staminaText = value; } }
 
     float score;
     public float _score
@@ -20,12 +23,16 @@ public class GameInterfaceHandler : MonoBehaviour
     {
         scoreText = transform.FindChild("Panel_Score/Text_Score").GetComponent<Text>();
         gameoverText = transform.FindChild("Game Over/Text_GameOver").GetComponent<Text>();
+        staminaText = transform.FindChild("Panel_Stamina/Text_Stamina").GetComponent<Text>();
         debugText = transform.FindChild("Panel_Debug/Text_Debug").GetComponent<Text>();
+
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent <PlayerInteraction>();
     }
 
     void Update()
     {
         scoreText.text = "Score: " + score;
+        staminaText.text = "Stamina: " + player._stamina;
 
         debugText.text =
             "Obstacles Alive" + "\nLane 01: " + s_SpawnHandler._instance._laneObjectsAlive[0]
