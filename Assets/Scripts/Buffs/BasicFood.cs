@@ -10,7 +10,7 @@ public class BasicFood : MonoBehaviour
         this.transform.localRotation = Quaternion.Euler(new Vector3(-45, -45, 0));
     }
 
-    new void FixedUpdate()
+    void FixedUpdate()
     {
         this.transform.position += new Vector3(s_SpawnHandler._instance._staticMovementSpeed * 2, 0f, 0f);
     }

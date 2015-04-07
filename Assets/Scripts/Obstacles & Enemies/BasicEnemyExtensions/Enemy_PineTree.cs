@@ -12,7 +12,7 @@ public class Enemy_PineTree : BasicEnemy
         this.transform.localRotation = Quaternion.Euler(new Vector3(-90, 0, 0));
     }
 
-    new void FixedUpdate()
+    void FixedUpdate()
     {
         this.transform.position += new Vector3(forwardSpeed * 2, 0f, 0f);
     }

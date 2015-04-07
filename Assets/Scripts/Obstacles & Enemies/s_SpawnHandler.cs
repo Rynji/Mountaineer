@@ -66,7 +66,7 @@ public class s_SpawnHandler : MonoBehaviour
         spawnDelay = 0.3f;
         maxObjectsPerLane = 5;
         staticMovementSpeed = -0.075f;
-        foodSpawnDelay = 6f;
+        foodSpawnDelay = 6.5f;
 
         for (int i = 0; i < spawnLanes.Length; i++)
         {
