@@ -26,7 +26,7 @@ public class PlayerInteraction : MonoBehaviour
 
         gameCanvas._score = 0f;
 
-        stamina = 10f;
+        stamina = 12.5f;
     }
 
     void Update()
