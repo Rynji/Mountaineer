@@ -16,6 +16,10 @@ public class PlayerInteraction : MonoBehaviour
         set { stamina = value; }
     }
 
+    public int score = 0;
+    public float highScore = 0;
+    string highScoreKey = "HighScore";
+
     void Awake()
     {
         gameCanvas = GameObject.Find("GameCanvas").GetComponent<GameInterfaceHandler>();
@@ -27,6 +31,12 @@ public class PlayerInteraction : MonoBehaviour
         gameCanvas._score = 0f;
 
         stamina = 12.5f;
+    }
+
+    void Start()
+    {
+        //Get the highScore from player prefs if it is there, 0 otherwise.
+        highScore = PlayerPrefs.GetFloat(highScoreKey, 0);
     }
 
     void Update()
@@ -66,7 +76,18 @@ public class PlayerInteraction : MonoBehaviour
     void GameOver()
     {
         this.gameObject.SetActive(false);
+
+        //If our score is greater than the highscore, set new highscore and save.
+        if (gameCanvas._score > highScore)
+        {
+            PlayerPrefs.SetFloat(highScoreKey, gameCanvas._score);
+            PlayerPrefs.Save();
+        }
+
         gameCanvasAnim.SetTrigger("GameOver");
-        gameCanvas._gameoverText.text = "Game Over!\nScore: " + gameCanvas._score; 
+        gameCanvas._gameoverText.text = "Game Over!\nScore: " + gameCanvas._score;
+
+        gameCanvas._highscoreText.text = "Highscore: " + PlayerPrefs.GetFloat(highScoreKey, 0);
     }
+
 }
