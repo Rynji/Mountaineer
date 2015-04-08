@@ -88,7 +88,7 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &65418740 stripped
+--- !u!114 &65418740
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11410950, guid: 00c67d147924c6147831e9090882f075,
     type: 2}
@@ -487,8 +487,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 6
   m_Type: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: .5
+  m_Color: {r: 1, g: .8154158, b: .485294104, a: 1}
+  m_Intensity: .959999979
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -560,7 +560,7 @@ Light:
   serializedVersion: 6
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: .699999988
+  m_Intensity: 1.20000005
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -661,34 +661,34 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11454322, guid: b8540e2810374ad43967d6c662e96a65, type: 2}
+      propertyPath: delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 65418740}
+    - target: {fileID: 11454322, guid: b8540e2810374ad43967d6c662e96a65, type: 2}
+      propertyPath: delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 65418740}
+    - target: {fileID: 11468854, guid: b8540e2810374ad43967d6c662e96a65, type: 2}
+      propertyPath: delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 65418740}
+    - target: {fileID: 11468854, guid: b8540e2810374ad43967d6c662e96a65, type: 2}
+      propertyPath: delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 65418740}
+    - target: {fileID: 11493314, guid: b8540e2810374ad43967d6c662e96a65, type: 2}
+      propertyPath: delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 65418740}
+    - target: {fileID: 11493314, guid: b8540e2810374ad43967d6c662e96a65, type: 2}
+      propertyPath: delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 65418740}
     - target: {fileID: 164898, guid: b8540e2810374ad43967d6c662e96a65, type: 2}
       propertyPath: m_Name
       value: GameCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 11493314, guid: b8540e2810374ad43967d6c662e96a65, type: 2}
-      propertyPath: delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 65418740}
-    - target: {fileID: 11493314, guid: b8540e2810374ad43967d6c662e96a65, type: 2}
-      propertyPath: delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 65418740}
-    - target: {fileID: 11468854, guid: b8540e2810374ad43967d6c662e96a65, type: 2}
-      propertyPath: delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 65418740}
-    - target: {fileID: 11468854, guid: b8540e2810374ad43967d6c662e96a65, type: 2}
-      propertyPath: delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 65418740}
-    - target: {fileID: 11454322, guid: b8540e2810374ad43967d6c662e96a65, type: 2}
-      propertyPath: delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 65418740}
-    - target: {fileID: 11454322, guid: b8540e2810374ad43967d6c662e96a65, type: 2}
-      propertyPath: delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 65418740}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b8540e2810374ad43967d6c662e96a65, type: 2}
   m_IsPrefabParent: 0

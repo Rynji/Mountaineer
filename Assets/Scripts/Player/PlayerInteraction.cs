@@ -26,7 +26,7 @@ public class PlayerInteraction : MonoBehaviour
 
         gameCanvas._score = 0f;
 
-        stamina = 14f;
+        stamina = 12.5f;
     }
 
     void Update()
@@ -58,17 +58,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (collider.tag == "BasicFood")
         {
-            if(this.stamina < 10)
-                this.stamina += 10;
-            else if (this.stamina > 10 && this.stamina < 15)
-                this.stamina += 7.5f;
-            else if (this.stamina > 15 && this.stamina < 20)
-                this.stamina += 5;
-            else if (this.stamina > 20 && this.stamina < 30)
-                this.stamina += 2.5f;
-            else if (this.stamina > 30)
-                this.stamina += 0.5f;
-
+            this.stamina += 10;
             Destroy(collider.gameObject);
         }
     }

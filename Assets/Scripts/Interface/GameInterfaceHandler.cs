@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class GameInterfaceHandler : MonoBehaviour 
 {
     Text scoreText, gameoverText, staminaText, debugText;
+    RectTransform staminaBar;
     PlayerInteraction player;
 
     public Text _gameoverText
@@ -24,6 +25,7 @@ public class GameInterfaceHandler : MonoBehaviour
         scoreText = transform.FindChild("Panel_Score/Text_Score").GetComponent<Text>();
         gameoverText = transform.FindChild("Game Over/Text_GameOver").GetComponent<Text>();
         staminaText = transform.FindChild("Panel_Stamina/Text_Stamina").GetComponent<Text>();
+        staminaBar = transform.FindChild("Panel_Stamina/Bar_Stamina").GetComponent<RectTransform>();
         debugText = transform.FindChild("Panel_Debug/Text_Debug").GetComponent<Text>();
 
         player = GameObject.FindGameObjectWithTag("Player").GetComponent <PlayerInteraction>();
@@ -31,6 +33,8 @@ public class GameInterfaceHandler : MonoBehaviour
 
     void Update()
     {
+        ResizeStaminaBar();
+
         scoreText.text = "Score: " + score;
         staminaText.text = "Stamina: " + player._stamina;
 
@@ -47,6 +51,11 @@ public class GameInterfaceHandler : MonoBehaviour
     public void RestartGame()
     {
         Application.LoadLevel("LevelFirst");
+    }
+
+    void ResizeStaminaBar()
+    {
+        staminaBar.localScale = new Vector3((player._stamina / 30f), 1, 1);
     }
 
 }

@@ -106,7 +106,7 @@ public class s_SpawnHandler : MonoBehaviour
         //Standard Goat
         obstacleGoat = Resources.Load("Prefabs/Obstacles/Obstacle_Goat") as GameObject;
         obstaclePineTree = Resources.Load("Prefabs/Obstacles/Obstacle_PineTree") as GameObject;
-        obstacleSnowball = Resources.Load("Prefabs/Obstacles/Obstacle_Snowball") as GameObject;
+        obstacleSnowball = Resources.Load("Prefabs/Obstacles/Obstacle_Snowball02") as GameObject;
 
         basicFood = Resources.Load("Prefabs/Buffs/BasicFood") as GameObject;
     }
@@ -127,7 +127,6 @@ public class s_SpawnHandler : MonoBehaviour
             yield return new WaitForSeconds(spawnDelay);
 
             int spawnDecider = Random.Range(0, 16);
-            Debug.Log("SpawnDecider: " + spawnDecider);
 
             switch (spawnDecider)
             {
