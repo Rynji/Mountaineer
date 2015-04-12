@@ -9,7 +9,7 @@ public class Enemy_PineTree : BasicEnemy
         SetSpeed(s_SpawnHandler._instance._staticMovementSpeed, s_SpawnHandler._instance._staticMovementSpeed);
         spawnHeight = 4.48f;
         this.transform.position += new Vector3(0, spawnHeight, 0);
-        this.transform.localRotation = Quaternion.Euler(new Vector3(-90, 0, 0));
+        this.transform.localRotation = Quaternion.Euler(new Vector3(-90, Random.Range(0f, 360f), 0));
     }
 
     void FixedUpdate()

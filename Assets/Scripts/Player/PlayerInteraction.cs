@@ -5,9 +5,9 @@ public class PlayerInteraction : MonoBehaviour
 {
     Animator gameCanvasAnim;
     GameInterfaceHandler gameCanvas;
-    BoxCollider playerCollider;
     Camera cam;
     Plane[] planes;
+    MeshRenderer sled;
 
     float stamina;
     public float _stamina
@@ -26,11 +26,11 @@ public class PlayerInteraction : MonoBehaviour
         gameCanvasAnim = GameObject.Find("GameCanvas").GetComponent<Animator>();
         cam = Camera.main;
         planes = GeometryUtility.CalculateFrustumPlanes(cam);
-        playerCollider = this.GetComponent<BoxCollider>();
+        sled = transform.FindChild("DwarvenSled/Sled").GetComponent<MeshRenderer>();
 
         gameCanvas._score = 0f;
 
-        stamina = 12.5f;
+        //stamina = 12.5f;
     }
 
     void Start()
@@ -42,18 +42,21 @@ public class PlayerInteraction : MonoBehaviour
     void Update()
     {
         //If player falls ofscreen:
-        if (!GeometryUtility.TestPlanesAABB(planes, playerCollider.bounds))
+        if (!GeometryUtility.TestPlanesAABB(planes, sled.bounds))
+        {
             GameOver();
+            Debug.Log("Game Over due to leaving screen");
+        }
     }
 
     void FixedUpdate()
     {
         gameCanvas._score++;
 
-        stamina -= 0.015f;
+        //stamina -= 0.015f;
 
-        if (stamina < 0)
-            GameOver();
+        //if (stamina < 0)
+            //GameOver();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -68,8 +71,15 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (collider.tag == "BasicFood")
         {
-            this.stamina += 10;
-            Destroy(collider.gameObject);
+            if (this.stamina < 30)
+            {
+                if (this.stamina > 25)
+                    this.stamina = 30;
+                else
+                    this.stamina += 5;
+
+                Destroy(collider.gameObject);
+            }
         }
     }
 

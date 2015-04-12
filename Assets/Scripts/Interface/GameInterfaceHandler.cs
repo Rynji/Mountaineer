@@ -39,7 +39,7 @@ public class GameInterfaceHandler : MonoBehaviour
         ResizeStaminaBar();
 
         scoreText.text = "Score: " + score;
-        staminaText.text = "Stamina: " + player._stamina;
+        staminaText.text = "Fuel: " + player._stamina;
 
         debugText.text =
             "Obstacles Alive" + "\nLane 01: " + s_SpawnHandler._instance._laneObjectsAlive[0]

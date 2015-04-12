@@ -104,7 +104,7 @@ public class s_SpawnHandler : MonoBehaviour
     void LoadPrefabs()
     {
         //Standard Goat
-        obstacleGoat = Resources.Load("Prefabs/Obstacles/Obstacle_Goat") as GameObject;
+        obstacleGoat = Resources.Load("Prefabs/Obstacles/Goat/Obstacle_Goat") as GameObject;
         obstaclePineTree = Resources.Load("Prefabs/Obstacles/Obstacle_PineTree") as GameObject;
         obstacleSnowball = Resources.Load("Prefabs/Obstacles/Obstacle_Snowball02") as GameObject;
 

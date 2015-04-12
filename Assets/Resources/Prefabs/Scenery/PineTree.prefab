@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 401314}
   - 33: {fileID: 3340242}
   - 23: {fileID: 2396764}
+  - 95: {fileID: 9548784}
   m_Layer: 0
   m_Name: PineTree
   m_TagString: Untagged
@@ -24,8 +25,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 127486}
   m_LocalRotation: {x: -.707106829, y: 0, z: -0, w: .707106829}
-  m_LocalPosition: {x: -.478399992, y: 1.22000003, z: -.193000004}
-  m_LocalScale: {x: .0314244777, y: .13580358, z: .37875697}
+  m_LocalPosition: {x: -1.82299995, y: 3.6400001, z: 1.58000004}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -39,7 +40,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 4b7f7c2869325044e93b0995697600a3, type: 2}
+  - {fileID: 2100000, guid: 804f271660208234485bbdd8ef706a01, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -59,7 +60,24 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 127486}
-  m_Mesh: {fileID: 4300000, guid: 03f87ca16a52b094cacbd495db91e9a4, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 2b78201161f1e154ab3fa5830bc7d4c9, type: 3}
+--- !u!95 &9548784
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127486}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 2b78201161f1e154ab3fa5830bc7d4c9, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

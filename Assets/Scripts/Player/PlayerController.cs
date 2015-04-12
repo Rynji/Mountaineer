@@ -25,11 +25,16 @@ public class PlayerController : MonoBehaviour
     // Components
     CharacterController controller;
 
+    //Animation
+    Animator propAnimator, engineAnimator;
+
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        pushbackSpeed = 0.05f;
+        propAnimator = transform.FindChild("DwarvenSled/Sled/Engine/Propellor").GetComponent<Animator>();
+        engineAnimator = transform.FindChild("DwarvenSled/Sled/Engine").GetComponent<Animator>();
+        pushbackSpeed = 0.075f;
     }
 
     void Update()
@@ -58,6 +63,12 @@ public class PlayerController : MonoBehaviour
             targetRotation = Quaternion.LookRotation(input);
             transform.eulerAngles = Vector3.up * Mathf.MoveTowardsAngle(transform.eulerAngles.y, targetRotation.eulerAngles.y, rotationSpeed * Time.deltaTime);
         }
+        else
+        {
+            propAnimator.SetBool("movingForward", false);
+            engineAnimator.SetBool("movingForward", false);
+
+        }
 
         Vector3 motion = input;
         motion *= (Mathf.Abs(input.x) == 1 && Mathf.Abs(input.z) == 1) ? .7f : 1;
@@ -83,6 +94,12 @@ public class PlayerController : MonoBehaviour
     public void moveForward(int inputValue)
     {
         inputForward = inputValue;
+
+        if (inputValue > 0)
+        {
+            propAnimator.SetBool("movingForward", true);
+            engineAnimator.SetBool("movingForward", true);
+        }
     }
 
 

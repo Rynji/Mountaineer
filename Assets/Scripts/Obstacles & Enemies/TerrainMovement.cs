@@ -11,6 +11,6 @@ public class TerrainMovement : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "RepositionerOfTerrain")
-            this.transform.position += new Vector3(41.02f, 0, 0);
+            this.transform.position += new Vector3(41f, 0, 0);
     }
 }
